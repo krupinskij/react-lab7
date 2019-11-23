@@ -1,13 +1,135 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.modal {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 30%;
+  padding: 5% 0;
+  font-size: 200%;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  background: gray;
+  color: white;
+  z-index: 1
+}
+
+.employees-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.employees-list__button {
+  width: 30%;
+  height: 50px;
+  margin: 10px 10%;
+  background-color: #0b0;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #000;
+  font-size: 120%;
+  color: white;
+  cursor: pointer
+}
+
+.employee {
+  position: relative;
+  border-radius: 10px;
+  width: 27%;
+  min-width: 300px;
+  margin: 10px;
+  padding: 10px 0 10px 30px
+}
+
+.employee__delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 40px;
+  width: 40px;
+  border: 0;
+  border-radius: 20%;
+  font-size: 120%;
+  background-color: #fff;
+  color: black;
+  box-shadow: 2px 2px 2px black, -2px -2px 2px black;
+  cursor: pointer
+}
+
+.employee__data {
+  font-size: 120%
+}
+
+.employee__data--name {
+  font-size: 150%;
+  font-weight: bold
+}
+
+.form__container {
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 1px 3px 7px grey;
+  margin: 30px 20%;
+  font-size: 120%
+}
+
+.form {
+  padding: 5% 30px
+}
+
+.form__grid {
+  display: grid;
+  grid-template-columns: 2fr 7fr;
+  gap: 20px;
+  margin: 10px 0
+}
+
+.form__label {
+  justify-self: flex-end
+}
+
+.form__input {
+  justify-self: flex-start;
+  width: 90%;
+  padding: 5px 15px;
+  font-size: 90%
+}
+
+.form__input--checkbox {
+  justify-self: flex-start
+}
+
+.form__buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.form__btn {
+  width: 50%;
+  height: 40px;
+  margin: 20px 25% 0 25%;
+
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #000;
+  font-size: 100%;
+  color: white;
+  cursor: pointer
+}
+
+.form__btn--submit {
+  background-color: #0b0;
+}
+
+.form__btn--cancel {
+  background-color: #b00;
 }
