@@ -13,9 +13,12 @@ class AddEmployeeForm extends React.Component {
 	}
 
 	handleValueChange = (event) => {
-		this.setState({
-			[event.target.name]: event.target.value
-		})
+		const value = event.target.value;
+		const name = event.target.name
+		
+		this.setState((prevState, props) => ({
+			[name]: value
+		}))
 	}
 
 	handleSubmit = (event) => {

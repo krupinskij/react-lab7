@@ -137,6 +137,11 @@ code {
   background-color: green;
 }
 
+.form__btn--submit:disabled {
+  background-color: #999;
+  cursor: not-allowed 
+}
+
 .form__btn--cancel {
   background-color: #b00;
 }

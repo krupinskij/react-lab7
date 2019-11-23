@@ -11,14 +11,45 @@ class AddFakeEmployeeForm extends React.Component {
 		name: "",
 		email: "",
 
-		wrongPhoneNumber: false,
-		wrongEmail: false
+		wrongPhoneNumber: true,
+		wrongEmail: true,
+		canSubmit: false
 	}
 
 	handleValueChange = (event) => {
-		this.setState({
+		this.setState((prevState, props) => ({
 			[event.target.name]: event.target.value
-		})
+		}))
+	}
+
+	handleAgeChange = (event) => {
+		const newAge = event.target.value;
+		this.setState((prevState, props) => ({
+			age: newAge,
+			canSubmit: newAge<18 ? !prevState.wrongPhoneNumber : !prevState.wrongEmail
+		}))
+	}
+
+	handlePhoneNumberChange = (event) => {
+		const value = event.target.value
+		const isValid = this.validatePhoneNumber(value);
+
+		this.setState((prevState, props) => ({
+			parentPhoneNo: value,
+			wrongPhoneNumber: !isValid,
+			canSubmit: isValid
+		}))
+	}
+
+	handleEmailChange = (event) => {
+		const value = event.target.value
+		const isValid = this.validateEmail(value);
+
+		this.setState((prevState, props) => ({
+			email: value,
+			wrongEmail: !isValid,
+			canSubmit: isValid
+		}))
 	}
 
 	validatePhoneNumber = (phoneNumber) => {
@@ -33,36 +64,10 @@ class AddFakeEmployeeForm extends React.Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
 
-		if(this.state.age<18) {
-
-			if(this.validatePhoneNumber(this.state.parentPhoneNo)) {
-				this.setState((prevState, props) => ({
-					wrongPhoneNumber: false
-				}))
-			} else {
-				this.setState((prevState, props) => ({
-					wrongPhoneNumber: true
-				}))
-
-				return;
-			}
-		} else {
-			if(this.validateEmail(this.state.email)) {
-				this.setState((prevState, props) => ({
-					wrongEmail: false
-				}))
-			} else {
-				this.setState((prevState, props) => ({
-					wrongEmail: true
-				}))
-
-				return;
-			}
-		}
-		
 		this.setState((prevState, props) => ({
 			wrongPhoneNumber: false,
-			wrongEmail: false
+			wrongEmail: false,
+			canSubmit: true
 		}))
 		event.target.reset();
 		this.props.changeActivePanel("EmployeesList");
@@ -76,7 +81,7 @@ class AddFakeEmployeeForm extends React.Component {
 
 					<div className="form__grid" >
 						<label className="form__label" htmlFor="addAgeInp">Age:</label>
-						<input className="form__input" type="number" name="age" id="addAgeInp" min="0" onChange={this.handleValueChange} />
+						<input className="form__input" type="number" name="age" id="addAgeInp" min="0" onChange={this.handleAgeChange} />
 					</div>
 
 					{
@@ -89,7 +94,7 @@ class AddFakeEmployeeForm extends React.Component {
 
 								<label className="form__label" htmlFor="parentPhoneNumber">Parent Phone No:</label>
 								<input className="form__input" type="text" name="parentPhoneNo" id="parentPhoneNumber"
-									value={this.state.parentPhoneNo}  onChange={this.handleValueChange} />
+									value={this.state.parentPhoneNo}  onChange={this.handlePhoneNumberChange} />
 									{
 										this.state.wrongPhoneNumber && 
 										<span className="warning">
@@ -106,7 +111,7 @@ class AddFakeEmployeeForm extends React.Component {
 
 									<label className="form__label" htmlFor="emailInp">Email:</label>
 									<input className="form__input" type="text" name="email" id="emailInp"
-										value={this.state.email} onChange={this.handleValueChange} />
+										value={this.state.email} onChange={this.handleEmailChange} />
 										{
 											this.state.wrongEmail && 
 											<span className="warning">
@@ -117,7 +122,8 @@ class AddFakeEmployeeForm extends React.Component {
 							)}
 
 					<div>
-						<input className="form__btn form__btn--submit" type="submit" value="Submit" />
+						<input className="form__btn form__btn--submit" type="submit" value="Submit"
+							disabled={!this.state.canSubmit} />
 					</div>
 
 				</form>
