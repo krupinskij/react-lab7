@@ -10,9 +10,9 @@ class EmployeesList extends React.Component {
 		}
 
 		const buttonStyle = {
-			width: '50%',
+			width: '30%',
 			height: '50px',
-			margin: '10px 25%',
+			margin: '10px 10%',
 
 			backgroundColor: '#0b0',
 			border: '0',
@@ -59,6 +59,10 @@ class EmployeesList extends React.Component {
 
 				<button style={buttonStyle} onClick={() => { this.props.changeActivePanel("AddEmployeeForm") }}>
 					Add employee
+        </button>
+
+				<button style={buttonStyle} onClick={() => { this.props.changeActivePanel("AddFakeEmployeeForm") }}>
+					Add fake employee
         </button>
 			</div>
 		)

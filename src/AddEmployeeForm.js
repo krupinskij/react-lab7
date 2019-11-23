@@ -184,11 +184,11 @@ class AddEmployeeForm extends React.Component {
 				<form onSubmit={this.handleSubmit} style={formStyle} method="POST" action="">
 
 					<div style={gridStyle} >
-						<label style={labelStyle} htmlFor="addNewInp">Name:</label>
+						<label style={labelStyle} htmlFor="addNameInp">Name:</label>
 						<input style={inputStyle} type="text" name="name" id="addNameInp" onChange={this.handleValueChange} />
 
 						<label style={labelStyle} htmlFor="addAgeInp">Age:</label>
-						<input style={inputStyle} type="number" name="age" id="addAgeInp" onChange={this.handleValueChange} />
+						<input style={inputStyle} type="number" name="age" id="addAgeInp" min="0" onChange={this.handleValueChange} />
 
 						<label style={labelStyle} htmlFor="addCompanyInp">Company:</label>
 						<input style={inputStyle} type="text" name="company" id="addCompanyInp" onChange={this.handleValueChange} />

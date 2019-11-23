@@ -1,6 +1,7 @@
 import React from 'react'
 import EmployeesList from './EmployeesList'
 import AddEmployeeForm from './AddEmployeeForm'
+import AddFakeEmployeeForm from './AddFakeEmployeeForm'
 
 class App extends React.Component {
 
@@ -54,11 +55,19 @@ class App extends React.Component {
 
         </div>
       )
-    } else {
+    } else if (this.state.activePanel === "AddEmployeeForm") {
       return (
         <div>
 
           <AddEmployeeForm refreshEmployees={this.refreshEmployees} changeActivePanel={this.changeActivePanel} activePanel={this.state.activePanel} />
+
+        </div>
+      )
+    } else {
+      return (
+        <div>
+
+          <AddFakeEmployeeForm refreshEmployees={this.refreshEmployees} changeActivePanel={this.changeActivePanel} activePanel={this.state.activePanel} />
 
         </div>
       )
