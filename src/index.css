@@ -23,6 +23,13 @@ code {
   z-index: 1
 }
 
+.warning {
+  font-size: 50%;
+  color: red;
+  grid-column-start: 2;
+  margin-top: -10px;
+}
+
 .employees-list {
   display: flex;
   flex-wrap: wrap;
@@ -32,7 +39,7 @@ code {
   width: 30%;
   height: 50px;
   margin: 10px 10%;
-  background-color: #0b0;
+  background-color: green;
   border: 0;
   border-radius: 10px;
   box-shadow: 0 0 5px #000;
@@ -127,7 +134,7 @@ code {
 }
 
 .form__btn--submit {
-  background-color: #0b0;
+  background-color: green;
 }
 
 .form__btn--cancel {
